@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora Completa</title>
+ <link rel="stylesheet" href="/templates/css/calculadora.css">
+</head>
+<body>
+
+  <div id="calculadora">
+    <div class="calc-container">
+      <h2>Calculadora</h2>
+      <div class="display" id="display">0</div>
+
+      <div class="botoes">
+        <button onclick="limpar()">C</button>
+        <button onclick="apagar()">←</button>
+        <button onclick="inserirOperador('/')">÷</button>
+        <button onclick="inserirOperador('*')">×</button>
+
+        <button onclick="inserirNumero('7')">7</button>
+        <button onclick="inserirNumero('8')">8</button>
+        <button onclick="inserirNumero('9')">9</button>
+        <button onclick="inserirOperador('-')">−</button>
+
+        <button onclick="inserirNumero('4')">4</button>
+        <button onclick="inserirNumero('5')">5</button>
+        <button onclick="inserirNumero('6')">6</button>
+        <button onclick="inserirOperador('+')">+</button>
+
+        <button onclick="inserirNumero('1')">1</button>
+        <button onclick="inserirNumero('2')">2</button>
+        <button onclick="inserirNumero('3')">3</button>
+        <button onclick="calcular()">=</button>
+
+        <button class="zero" onclick="inserirNumero('0')">0</button>
+        <button onclick="inserirNumero('.')">.</button>
+      </div>
+
+      <h3>Histórico</h3>
+      <ul id="historico"></ul>
+    </div>
+  </div>
+
+  <script src="/templates/js/calculadora.js"></script>
+
+</body>
+</html>
