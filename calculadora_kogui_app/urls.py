@@ -6,5 +6,5 @@ urlpatterns = [
     path('api/login/', login),
     path('api/calcular/', calcular),
     path('api/historico/', historico),
-     path('api/usuarios/', criar_usuario),
+    path('api/usuarios/', criar_usuario),
 ]

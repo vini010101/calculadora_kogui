@@ -3,10 +3,7 @@ from django.db import models
 from django.db import models
 from django.contrib.auth.models import User
 
-
-
-
-
+# aqui criei apenas a model que armazenas as operaçoes, usei amodel padrão do Django para armazenar os usuarios.
 class Operacao(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     operador = models.CharField(max_length=1)  # + - * /

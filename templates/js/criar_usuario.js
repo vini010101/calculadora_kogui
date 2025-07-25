@@ -18,13 +18,24 @@ document.getElementById('login-form').addEventListener('submit', async function 
       body: JSON.stringify(payload)
     });
 
-    if (response.ok) {
-      alert('Usuário criado com sucesso!');
-    } else {
-      const data = await response.json();
-      alert('Erro ao criar usuário: ' + JSON.stringify(data));
+    const text = await response.text();
+    console.log('Resposta:', text);
+
+    try {
+      const data = JSON.parse(text);
+
+      if (response.status === 201) {
+        alert('✅ Usuário criado com sucesso!');
+        document.getElementById('login-form').reset(); // limpa o formulário
+      } else {
+        alert('❌ Erro ao criar usuário:\n' + JSON.stringify(data, null, 2));
+      }
+
+    } catch (e) {
+      alert('❌ Erro: resposta inválida do servidor:\n' + text);
     }
+
   } catch (error) {
-    //alert('Erro de conexão: ' + error.message);
+    alert('🚫 Erro de conexão:\n' + error.message);
   }
 });

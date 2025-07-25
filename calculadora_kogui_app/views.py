@@ -1,4 +1,4 @@
-from django.shortcuts import render
+# aqui importei as bibliotecas necessarias.
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Operacao
@@ -9,10 +9,12 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 
 
-
-
-
-
+# Rota para criação de usuários.
+# Espera dados no formato JSON contendo "username" e "password".
+# - Se faltar algum campo, retorna erro 400.
+# - Se o usuário já existir, também retorna erro 400.
+# - Caso contrário, cria um novo usuário usando o modelo padrão do Django (User),
+#   que já aplica hash na senha automaticamente.
 @api_view(['POST'])
 def criar_usuario(request):
     username = request.data.get('username')
@@ -29,10 +31,10 @@ def criar_usuario(request):
 
 
 
-
-
-
-
+# Rota de autenticação (login).
+# Recebe "username" e "password" via JSON.
+# Se as credenciais forem válidas, retorna um token de autenticação.
+# Caso contrário, retorna erro 401.
 @api_view(['POST'])
 def login(request):
     username = request.data.get('username')
@@ -47,8 +49,10 @@ def login(request):
         return Response({'error': 'Credenciais inválidas'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
-
-
+# Rota para realizar uma operação matemática (+, -, *, /).
+# - Requer autenticação via token.
+# - Recebe "numero1", "numero2" e "operador" via JSON.
+# - Executa o cálculo e salva a operação no banco associada ao usuário autenticado.
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -77,10 +81,13 @@ def calcular(request):
         resultado=res
     )
 
-    # Retorne explicitamente JSON com status 200
+    
     return Response({'resultado': res}, status=200)
 
 
+
+# Rota para exibir o histórico das últimas 10 operações realizadas pelo usuário autenticado.
+# Retorna uma lista contendo a expressão, resultado e data de cada operação.
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def historico(request):
