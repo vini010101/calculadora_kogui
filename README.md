@@ -50,11 +50,13 @@ pip install -r requirements.txt
 Aplique migrações no banco de dados:
 python manage.py migrate
 
-Execute o servidor localmente:
+Execute o servidor Django localmente:
 python manage.py runserver
+
+Para rodar o frontend, utilize o LiveServer ou outro servidor estático, certificando-se de que o servidor Django está ativo para responder às requisições da API.
 Utilize ferramentas como Postman para testar as rotas conforme tabela acima.
 
-Para endpoints protegidos, utilize o token JWT retornado no login no cabeçalho da requisição:
+Para endpoints protegidos, utilize o token retornado no login no cabeçalho da requisição:
 Authorization: Token <token>
 Observações
 Projeto focado em atender os requisitos mínimos solicitados no teste técnico.
@@ -64,4 +66,3 @@ Código limpo e comentado para facilitar entendimento.
 Possibilidade de melhorias em validações, segurança e documentação caso haja continuidade no desenvolvimento.
 
 Uso de SQLite para facilitar setup e teste local.
-
